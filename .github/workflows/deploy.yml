@@ -26,16 +26,14 @@ jobs:
       - name: Build and Test with Maven
         run: mvn clean package
 
-      - name: Deploy in EC2 using lib
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOSTNAME }}
           username: ${{ secrets.USER_NAME }}
-          key: ${{ secrets.ONLY_PRIVATE_KEY }}
-          scp: |
-            target/SpringBootHelloWorldExampleApplication-1.war => ~/
-          last_ssh: |
-            java -jar target/SpringBootHelloWorldExampleApplication-1.war
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          source: "target/SpringBootHelloWorldExampleApplication-1.war"
+          target: "test"
 
 #      - name: Deploy in EC2
 #        env:
