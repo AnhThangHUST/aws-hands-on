@@ -31,7 +31,7 @@ jobs:
         with:
           host: ${{ secrets.HOSTNAME }}
           username: ${{ secrets.USER_NAME }}
-          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          key: ${{ secrets.ONLY_PRIVATE_KEY }}
           scp: |
             target/SpringBootHelloWorldExampleApplication-1.war => ~/
           last_ssh: |
