@@ -42,8 +42,10 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
-            java -jar target/SpringBootHelloWorldExampleApplication-1.war & disown
-            exit
+            whoami
+            ls -al
+#            java -jar target/SpringBootHelloWorldExampleApplication-1.war & disown
+#            exit
 
 #      - name: Deploy in EC2
 #        env:
