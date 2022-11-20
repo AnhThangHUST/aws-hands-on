@@ -32,8 +32,8 @@ jobs:
           host: ${{ secrets.HOSTNAME }}
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
-          source: "target/SpringBootHelloWorldExampleApplication-1.war"
-          target: "test"
+          source: target/SpringBootHelloWorldExampleApplication-1.war
+          target: test.war
 
 #      - name: Deploy in EC2
 #        env:
