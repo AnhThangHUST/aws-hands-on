@@ -26,8 +26,8 @@ jobs:
       - name: Build and Test with Maven
         run: mvn clean package
 
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
+      - name: Deploy in EC2 using lib
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with:
           host: ${{ secrets.HOSTNAME }}
           username: ${{ secrets.USER_NAME }}
@@ -35,7 +35,6 @@ jobs:
           scp: |
             target/SpringBootHelloWorldExampleApplication-1.war => ~/
           last_ssh: |
-            echo $LASTSSH 
             java -jar target/SpringBootHelloWorldExampleApplication-1.war
 
 #      - name: Deploy in EC2
