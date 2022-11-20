@@ -35,6 +35,14 @@ jobs:
           source: target/SpringBootHelloWorldExampleApplication-1.war
           target: .
 
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          script: java -jar target/SpringBootHelloWorldExampleApplication-1.war
+
 #      - name: Deploy in EC2
 #        env:
 #          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
